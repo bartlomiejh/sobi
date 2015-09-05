@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Packages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Created at</th>
+      <th>Bike Id</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @packages.each do |package| %>
+      <tr>
+        <td><%= package.created_at %></td>
+        <td><%= package.bike_id %></td>
+        <td><%= package.message %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
