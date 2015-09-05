@@ -1,3 +1,3 @@
 class Package < ActiveRecord::Base
-  validates :message, :bikeId, presence: true
+  validates :message, :bike_id, presence: true
 end

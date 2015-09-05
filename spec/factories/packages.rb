@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :package do
-    bikeId 1
+    bike_id 1
     message 'MyText'
   end
 end
