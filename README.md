@@ -11,11 +11,13 @@ Client-server communication through redis server.
 It requires ruby 2.2.2.
 
 It's a rails app so after cloning go to project root and run:
-$ bundle install
-$ rails s
+
+    $ bundle install
+    $ rails s
 
 You can fill db with some sample data using:
-$ rake db:seed
+
+    $ rake db:seed
 
 ## Usage
 
