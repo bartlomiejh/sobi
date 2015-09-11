@@ -5,3 +5,5 @@ before_install: gem install bundler -v 1.10.6
 script:
   - bundle exec rubocop
   - bundle exec rspec
+services:
+  - redis-server
