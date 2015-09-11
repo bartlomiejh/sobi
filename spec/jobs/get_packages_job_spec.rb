@@ -15,5 +15,19 @@ describe GetPackagesJob, type: :job do
       it { is_expected.to change { Package.all.collect(&:bike_id) }.to([91]) }
       it { is_expected.to change { Package.all.collect(&:message) }.to(['abc']) }
     end
+
+    context 'when there are valid packages' do
+      let(:packages) do
+        [
+          { bike_id: 91, message: 'abc' },
+          { bike_id: 92, message: 'efg' },
+          { bike_id: 93, message: 'hij' }
+        ]
+      end
+
+      it { is_expected.to change { Package.count }.by(3) }
+      it { is_expected.to change { Package.all.collect(&:bike_id) }.by([91, 92, 93]) }
+      it { is_expected.to change { Package.all.collect(&:message) }.by(%w(abc efg hij)) }
+    end
   end
 end
