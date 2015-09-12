@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe GetPackagesJob, type: :job do
   describe '.perform' do
-    let(:redis) { Redis.new(host: 'localhost', port: 6379) }
+    let(:redis) { Redis.new(host: RedisConfig.host, port: RedisConfig.port) }
     before :each do
-      packages.each { |p| redis.lpush 'queue', p.to_json }
+      packages.each { |p| redis.lpush RedisConfig.queue, p.to_json }
     end
     subject { -> { described_class.perform_now } }
 

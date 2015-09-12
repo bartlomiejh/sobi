@@ -1,10 +1,13 @@
 class GetPackagesJob < ActiveJob::Base
   queue_as :default
 
-  def perform
-    redis = Redis.new(host: 'localhost', port: 6379)
+  before_perform do
+    # @review bhopek: what with closing connection
+    @redis = Redis.new(host: RedisConfig.host, port: RedisConfig.port)
+  end
 
-    collect_until_nil { redis.rpop 'queue' }.each do |package_params|
+  def perform
+    collect_until_nil { @redis.rpop RedisConfig.queue }.each do |package_params|
       p = Package.create JSON.parse(package_params).slice('bike_id', 'message')
       # @todo bhopek: add fancy logging - rollbar, snugbug
       p.valid? ? p.save! : Rails.logger.error("Params: #{package_params}, errors: #{p.errors.full_messages}")
