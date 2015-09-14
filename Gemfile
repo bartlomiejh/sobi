@@ -24,6 +24,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'redis', '~> 3.2.0'
 gem 'konf'
+gem 'rufus-scheduler', '~> 3.1.4'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
