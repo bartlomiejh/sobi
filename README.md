@@ -20,6 +20,7 @@ You can fill db with some sample data using:
     $ rake db:seed
 
 You can change redis server settings in:
+
     `config/redis.yml`
 
 ## Usage
