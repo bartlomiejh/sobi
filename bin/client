@@ -7,7 +7,7 @@ env = 'development'
 id = 1
 parser = OptionParser.new do |opts|
   opts.banner = 'Usage: client [-i 1] [-e development]'
-  opts.on('-e ENVIRONMENT', '--environment=ENVIRONMENT', 'Environment for reading redis.yml') do |v|
+  opts.on('-e ENVIRONMENT', '--environment=ENVIRONMENT', 'Environment for reading config from redis.yml') do |v|
     env = v ||= 'development'
   end
   opts.on('-i ID', '--id=ID', 'Set package bike id') do |v|
