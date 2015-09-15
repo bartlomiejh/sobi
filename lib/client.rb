@@ -1,5 +1,6 @@
 require 'redis'
 require 'json'
+require 'securerandom'
 
 class Client
   def initialize(redis_config)
