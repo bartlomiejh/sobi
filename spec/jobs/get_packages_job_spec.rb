@@ -4,6 +4,7 @@ describe GetPackagesJob, type: :job do
   describe '.perform' do
     let(:redis) { Redis.new(host: RedisConfig.host, port: RedisConfig.port) }
     before :each do
+      redis.del RedisConfig.queue
       packages.each { |p| redis.lpush RedisConfig.queue, p.to_json }
     end
     subject { -> { described_class.perform_now } }
