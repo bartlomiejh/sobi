@@ -14,7 +14,7 @@ describe Client do
 
       let(:id) { 91 }
       it { is_expected.to include('bike_id' => 91) }
-      it { is_expected.to include('message' => 'message') }
+      it { is_expected.to satisfy('have 690 length message') { |package| package['message'].length == 690 } }
     end
 
     context 'when id is not given' do
@@ -24,7 +24,7 @@ describe Client do
       end
 
       it { is_expected.to include('bike_id' => 1) }
-      it { is_expected.to include('message' => 'message') }
+      it { is_expected.to satisfy('have 690 length message') { |package| package['message'].length == 690 } }
     end
   end
 end

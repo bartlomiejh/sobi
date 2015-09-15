@@ -8,6 +8,12 @@ class Client
   end
 
   def put_package(id = 1)
-    @redis.lpush @queue, { bike_id: id, message: 'message' }.to_json
+    @redis.lpush @queue, { bike_id: id, message: generate_random }.to_json
+  end
+
+  private
+
+  def generate_random
+    SecureRandom.hex(690 / 2)
   end
 end
