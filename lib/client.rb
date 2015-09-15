@@ -9,6 +9,7 @@ class Client
   end
 
   def put_package(id = 1)
+    # @review bhopek: validate json contract
     @redis.lpush @queue, { bike_id: id, message: generate_random }.to_json
   end
 
