@@ -22,7 +22,7 @@ Clone the repository then go to the project root dir and run:
 
 Configure redis server settings in:
 
-    `config/redis.yml`
+    config/redis.yml
 
 **Server**
 
@@ -52,9 +52,12 @@ Script returns length of the list after the push operations.
 
 Examples:
 - send message with bike_id = 1 to the development queue run:
-   $ ruby bin/client -h
+
+   `$ ruby bin/client`
+
 - send message with bike_id = 2 to the production queue run:
-   $ ruby bin/client -i 2 -e production
+
+   `$ ruby bin/client -i 2 -e production`
 
 ## Documentation
 
