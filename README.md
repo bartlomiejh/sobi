@@ -66,7 +66,8 @@ For now the only place for documentation is project spec directory
 
 ## Questions
 
-1. What is the size of one package send from client to server?
+
+###### Q1. What is the size of one package send from client to server?
 
 Redis client communicate with redis server using RESP protocol, and sends the message using TCP. So to find out what is the size of the package
 we must take into consideration several factors:
@@ -84,7 +85,8 @@ Using wireshark I've checked that **C** will be about 450 bytes (summing all tra
 
 To sum up - sample package send from client to redis server will have about 716+38+450=**1204 bytes** assuming that we talking about data upload from the client.
 
-2. Image that this message is a status update from our bike to server and your client application is our bike client. Knowing that we have a limit of 8 MB per bike per month (month is always 31 days
+
+###### Q2. Image that this message is a status update from our bike to server and your client application is our bike client. Knowing that we have a limit of 8 MB per bike per month (month is always 31 days
    long) calculate how many messages can we send per day, in a way that we do not go above limit and we send at least 2 messages per day.
 
 If answer on previous question is correct then we shouldn't get into troubles with this limit, because ((8*1024*1024)/1204)/31 will give us about *224 message* per day.
@@ -94,7 +96,8 @@ However if we get into trouble with upload limit we could reduce size of package
 - compacting parameters names, name of queue, changing json to simpler structure,
 - maybe redis pipelining will cut off something from things related to **C** from previous point.
 
-3. What is the best strategy/setup for test environment for this client/server application. Describe the setup, and libraries
+
+###### Q3. What is the best strategy/setup for test environment for this client/server application. Describe the setup, and libraries
  that you would like to use in order to fully test it, remember that 100% test coverage does not always mean that application is well tested.
 
 I think that in general test coverage in only showing some trends, and can't be treated as fundamental quality measure. What is also worth to mention
