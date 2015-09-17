@@ -3,6 +3,7 @@ require 'client'
 
 describe Client do
   describe '#put_package' do
+    # @review bhopek: redis mock would be enough
     let(:redis) { Redis.new(host: RedisConfig.host, port: RedisConfig.port) }
     before(:each) { redis.del RedisConfig.queue }
 

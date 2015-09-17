@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe GetPackagesJob, type: :job do
   describe '.perform' do
+    # @review bhopek: redis mock would be enough
     let(:redis) { Redis.new(host: RedisConfig.host, port: RedisConfig.port) }
     before :each do
       redis.del RedisConfig.queue
