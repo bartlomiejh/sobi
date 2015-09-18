@@ -8,6 +8,7 @@ class GetPackagesJob < ActiveJob::Base
 
   def perform
     collect_until_nil { @redis.rpop RedisConfig.queue }.each do |package_params|
+      # @review bhopek: validate json contract
       p = Package.create JSON.parse(package_params).slice('bike_id', 'message')
       # @review bhopek: add fancy logging - rollbar, snugbug
       p.valid? ? p.save! : Rails.logger.error("Params: #{package_params}, errors: #{p.errors.full_messages}")
